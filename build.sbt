@@ -11,7 +11,7 @@ scalaVersion := "2.10.3"
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "1.6.1" % "provided",
   "org.apache.spark" %% "spark-sql" % "1.6.1" % "provided",
-  "net.sourceforge.tess4j" % "tess4j" % "3.0.0"
+  "net.sourceforge.tess4j" % "tess4j" % "3.1.0"
 )
 
 assemblyMergeStrategy in assembly := {
