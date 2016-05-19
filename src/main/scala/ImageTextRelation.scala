@@ -24,21 +24,22 @@ case class ImageTextRelation(path: String)(@transient val sqlContext: SQLContext
 
   override def buildScan: RDD[Row] = {
 
-    val tess = new Tesseract
-
     // creating an RDD of (String, String)
     val files = sqlContext.sparkContext.binaryFiles(path)
-    val data = files.map((f)=>{
-      (f._1, tess.doOCR(toBufferedImage(f._2.toArray())))
+    val data = files.mapPartitions((f) => {
+      val tess = new Tesseract
+      f.map(x => (x._1, tess.doOCR(toBufferedImage(x._2.toArray(), x._1))))
+
     })
 
     // transforming the RDD[(String, String)] to RDD[Row]
-    val result = data.map(r=>Row.fromTuple(r))
+    val result = data.map(r => Row.fromTuple(r))
     result
   }
 
-  private def toBufferedImage(image: Array[Byte]): BufferedImage = {
-    ImageIO.read(new ByteArrayInputStream(image))
+  private def toBufferedImage(image: Array[Byte], fileName: String): BufferedImage = {
+
+      ImageIO.read(new ByteArrayInputStream(image))
   }
 
 }
