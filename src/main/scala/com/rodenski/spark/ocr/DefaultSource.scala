@@ -1,7 +1,7 @@
 package com.rodenski.spark.ocr
 
 import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql.sources.{BaseRelation, CreatableRelationProvider, SchemaRelationProvider, RelationProvider}
+import org.apache.spark.sql.sources.{BaseRelation, RelationProvider}
 
 /**
   * Created by roadan on 5/17/16.

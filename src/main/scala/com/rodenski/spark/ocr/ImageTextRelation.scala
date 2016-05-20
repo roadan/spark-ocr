@@ -1,14 +1,14 @@
 package com.rodenski.spark.ocr
 
 import java.awt.image.BufferedImage
-import java.io.{ByteArrayInputStream, IOException}
+import java.io.ByteArrayInputStream
 import javax.imageio.ImageIO
 
 import net.sourceforge.tess4j.Tesseract
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{Row, SQLContext}
-import org.apache.spark.sql.sources.{TableScan, BaseRelation}
+import org.apache.spark.sql.sources.{BaseRelation, TableScan}
 import org.apache.spark.sql.types.{DataTypes, StructField, StructType}
+import org.apache.spark.sql.{Row, SQLContext}
 
 /**
   * Created by roadan on 5/17/16.
