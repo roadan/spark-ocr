@@ -6,10 +6,7 @@ import org.apache.spark.sql.sources.{BaseRelation, RelationProvider}
 /**
   * Created by roadan on 5/17/16.
   */
-class DefaultSource extends RelationProvider
-  //with SchemaRelationProvider
-  //with CreatableRelationProvider
-  {
+class DefaultSource extends RelationProvider {
 
   override def createRelation(sqlContext: SQLContext,
                               parameters: Map[String, String]): BaseRelation = {
@@ -23,7 +20,4 @@ class DefaultSource extends RelationProvider
     parameters.getOrElse("path", sys.error("'path' must be specified for CSV data."))
   }
 
-  //override def createRelation(sqlContext: SQLContext, parameters: Map[String, String], schema: StructType): BaseRelation = ???
-
-  //override def createRelation(sqlContext: SQLContext, mode: SaveMode, parameters: Map[String, String], data: DataFrame): BaseRelation = ???
 }
